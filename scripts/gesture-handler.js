@@ -28,13 +28,13 @@ AFRAME.registerComponent('gesture-handler', {
 
     update: function() {
         if (this.data.enabled) {
-            //this.el.sceneEl.addEventListener('onefingermove', this.handleRotation);
+            this.el.sceneEl.addEventListener('onefingermove', this.handleRotation);
             //this.el.sceneEl.addEventListener('twofingermove', this.handleScale);
-            this.el.sceneEl.addEventListener('onefingerstart', this.handleClick);
+            //this.el.sceneEl.addEventListener('onefingerstart', this.handleClick);
         } else {
-            //this.el.sceneEl.removeEventListener('onefingermove', this.handleRotation);
+            this.el.sceneEl.removeEventListener('onefingermove', this.handleRotation);
             //this.el.sceneEl.removeEventListener('twofingermove', this.handleScale);
-            this.el.sceneEl.addEventListener('onefingerstart', this.handleClick);
+            //this.el.sceneEl.addEventListener('onefingerstart', this.handleClick);
         }
     },
 
@@ -50,11 +50,20 @@ AFRAME.registerComponent('gesture-handler', {
         }
     },
 
+    /*
     handleRotation: function(event) {
         if (this.isVisible) {
             this.el.object3D.rotation.y +=
                 event.detail.positionChange.x * this.data.rotationFactor;
             this.el.object3D.rotation.x +=
+                event.detail.positionChange.y * this.data.rotationFactor;
+        }
+    },*/
+    handleRotation: function(event) {
+        if (this.isVisible) {
+            this.el.object3D.position.y +=
+                event.detail.positionChange.x * this.data.rotationFactor;
+            this.el.object3D.position.x +=
                 event.detail.positionChange.y * this.data.rotationFactor;
         }
     },
