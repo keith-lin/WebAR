@@ -1,4 +1,4 @@
-import { OrbitControls } from '../lib/OrbitControls.js'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 let renderer, scene, camera
 let cameraControl, stats
